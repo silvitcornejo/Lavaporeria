@@ -1,2 +1,2 @@
 # FashionHub
-Mytheresa Technical Callenge 
+Silvit practice
