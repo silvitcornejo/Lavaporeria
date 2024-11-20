@@ -1,8 +1,6 @@
 const selectors = {
     content: '#content', 
     page_content: '[class="page-content"]',
-    categoriasBlock : '[data-id="7d56741f"] .elementor-container',
-    categoriasLinks : '[data-id="4c77c3f0"] li a'
 }
 
 Cypress.Commands.add("checkSiteIsUp", () => {
@@ -11,9 +9,9 @@ Cypress.Commands.add("checkSiteIsUp", () => {
 })
 
 
-Cypress.Commands.add("checkStructureOfLinks", () => {
-    cy.get(selectors.categoriasBlock).should('be.visible')
-    cy.get(selectors.categoriasLinks).each(($links) => {
+Cypress.Commands.add("checkStructureOfLinks", (component, hrefLinks) => {
+    cy.get(component).should('be.visible')
+    cy.get(hrefLinks).each(($links) => {
     cy.wrap($links).should('have.attr', 'href')
     const href = $links.prop('href')
     if (href) {
@@ -21,8 +19,8 @@ Cypress.Commands.add("checkStructureOfLinks", () => {
    })
 
 
-   Cypress.Commands.add('checkStatusCodeOfLinks', (randomlink) => {
-    cy.get(randomlink).then(($links) => {
+   Cypress.Commands.add('checkStatusCodeOfLinks', (selector) => {
+    cy.get(selector).then(($links) => {
         const randomIndex = Cypress._.random(0, $links.length - 1);
         const randomLink = $links[randomIndex];
         const href = randomLink.href;
@@ -30,19 +28,25 @@ Cypress.Commands.add("checkStructureOfLinks", () => {
         cy.request(href).its('status').should('eq', 200);
     })
 })
+
+    Cypress.Commands.add('vapeCards', (ofertasFlashComponent, ofertasFlashList, lengthOfCards) => {
+        cy.get(ofertasFlashComponent).should('be.visible')
+        cy.get(ofertasFlashList).should('be.visible').and('have.length', lengthOfCards)
+        })
+
+        Cypress.Commands.add('Pagination', (numberOfPagination) => {
+            cy.get('[class="woocommerce-pagination"]').should('be.visible')
+              cy.get('.woocommerce-pagination .page-numbers').should('be.visible').and('have.length', numberOfPagination)
+                .then((paginationNumbers) => {
+                  const paginationArray = Array.from(paginationNumbers);
+                  const randomIndex = Math.floor(Math.random() * paginationArray.length);
+                  const randomPage = paginationArray[randomIndex];
+                  cy.wrap(randomPage).click();
+                  const randomPageNumber = randomPage.textContent;
+                  cy.url().should('include', `product-page=${randomPageNumber}`);
+                  cy.get('.woocommerce-pagination .page-numbers.current')
+                    .should('have.text', randomPageNumber);
+      })
+      })
     
    
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
