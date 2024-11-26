@@ -8,7 +8,7 @@ const ofertasFlashList = '[data-id="48414a8"] .elementor-widget-container .wooco
 context('Lavaporeria Page Components Tests', () => {
   beforeEach(()=>{
     cy.visit('')
-    cy.checkSiteIsUp()
+    cy.checkHomepageIsUp()
   })
 
 describe('Cateorias List ', () => {
@@ -41,9 +41,9 @@ cy.checkStatusCodeOfLinks('[data-id="48414a8"] .elementor-widget-container .wooc
 })
 })
 
-describe.only('Pagination',() => {
+describe('Pagination',() => {
   it('Check pagination component',() => {
-  cy.Pagination(10)
+  cy.PaginationHomepage(10)
   cy.checkStatusCodeOfLinks('.woocommerce-pagination .page-numbers li a')
 })
 })

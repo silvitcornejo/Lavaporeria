@@ -3,9 +3,13 @@ const selectors = {
     page_content: '[class="page-content"]',
 }
 
-Cypress.Commands.add("checkSiteIsUp", () => {
+Cypress.Commands.add("checkHomepageIsUp", () => {
     cy.get(selectors.content).should('be.visible')
     cy.get(selectors.page_content).should('be.visible')
+})
+
+Cypress.Commands.add('checkCategoriasIsUp',() => {
+  cy.get('[data-elementor-type="product-archive"]').should('be.visible')
 })
 
 
@@ -34,19 +38,7 @@ Cypress.Commands.add("checkStructureOfLinks", (component, hrefLinks) => {
         cy.get(ofertasFlashList).should('be.visible').and('have.length', lengthOfCards)
         })
 
-        Cypress.Commands.add('Pagination', (numberOfPagination) => {
-            cy.get('[class="woocommerce-pagination"]').should('be.visible')
-              cy.get('.woocommerce-pagination .page-numbers').should('be.visible').and('have.length', numberOfPagination)
-                .then((paginationNumbers) => {
-                  const paginationArray = Array.from(paginationNumbers);
-                  const randomIndex = Math.floor(Math.random() * paginationArray.length);
-                  const randomPage = paginationArray[randomIndex];
-                  cy.wrap(randomPage).click();
-                  const randomPageNumber = randomPage.textContent;
-                  cy.url().should('include', `product-page=${randomPageNumber}`);
-                  cy.get('.woocommerce-pagination .page-numbers.current')
-                    .should('have.text', randomPageNumber);
-      })
-      })
+   
+      
     
    
