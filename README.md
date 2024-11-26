@@ -1,2 +1,8 @@
 # Lavaporeria
-Silvit practice lavaporeria 
+Silvit practice lavaporeria
+
+# Pre- Requisits
+Have nodejs LTS installed
+
+
+
