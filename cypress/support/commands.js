@@ -1,17 +1,10 @@
 const selectors = {
-    content: '#content', 
-    page_content: '[class="page-content"]',
+    page_body: '[data-elementor-device-mode="desktop"]',
 }
 
-Cypress.Commands.add("checkHomepageIsUp", () => {
-    cy.get(selectors.content).should('be.visible')
-    cy.get(selectors.page_content).should('be.visible')
+Cypress.Commands.add("checkPageIsUp", () => {
+    cy.get(selectors.page_body).should('be.visible')
 })
-
-Cypress.Commands.add('checkCategoriasIsUp',() => {
-  cy.get('[data-elementor-type="product-archive"]').should('be.visible')
-})
-
 
 Cypress.Commands.add("checkStructureOfLinks", (component, hrefLinks) => {
     cy.get(component).should('be.visible')
@@ -33,9 +26,9 @@ Cypress.Commands.add("checkStructureOfLinks", (component, hrefLinks) => {
     })
 })
 
-    Cypress.Commands.add('vapeCards', (ofertasFlashComponent, ofertasFlashList, lengthOfCards) => {
-        cy.get(ofertasFlashComponent).should('be.visible')
-        cy.get(ofertasFlashList).should('be.visible').and('have.length', lengthOfCards)
+    Cypress.Commands.add('vapeCards', (component, linkList, lengthOfCards) => {
+        cy.get(component).should('be.visible')
+        cy.get(linkList).should('be.visible').and('have.length', lengthOfCards)
         })
 
    
