@@ -8,7 +8,7 @@ const ofertasFlashList = '[data-id="48414a8"] .elementor-widget-container .wooco
 context('Lavaporeria Page Components Tests', () => {
   beforeEach(()=>{
     cy.visit('')
-    cy.checkHomepageIsUp()
+    cy.checkPageIsUp()
   })
 
 describe('Cateorias List ', () => {
