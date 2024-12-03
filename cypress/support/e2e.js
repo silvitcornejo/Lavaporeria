@@ -20,5 +20,7 @@ import './pageobject/homepage-vape'
 
 import './pageobject/categoria-vape'
 
+import './pageobject/product-vape'
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
