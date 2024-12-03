@@ -24,7 +24,7 @@ cy.checkSearchBarFunctionality('Charlie',2)
 
 describe('Dropdown Filtering',() => {
 it('Select a random option and check outcome',() =>{
-  cy.dropdownFilter()
+  cy.dropdownFilter('[class="woocommerce-ordering"] select','popularity')
   })
   })
 

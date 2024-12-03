@@ -1,8 +1,7 @@
 const selectors = {
     searchBar: '[id="woocommerce-product-search-field-0"]',
     buscarButton : '[class="woocommerce-product-search"] button',
-    productsList : '[class="products elementor-grid columns-4"] li',
-    dropdownFilter : '[class="woocommerce-ordering"] select'
+    productsList : '[class="products elementor-grid columns-4"] li'
 }
 
 
@@ -31,7 +30,3 @@ Cypress.Commands.add('paginationCategories', (numberOfPagination) => {
         
 })
 
-Cypress.Commands.add('dropdownFilter',() => {
-  cy.get(selectors.dropdownFilter).should('be.visible')
-  cy.get('select').select('popularity')
-})

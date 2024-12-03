@@ -31,7 +31,10 @@ Cypress.Commands.add("checkStructureOfLinks", (component, hrefLinks) => {
         cy.get(linkList).should('be.visible').and('have.length', lengthOfCards)
         })
 
-   
+        Cypress.Commands.add('dropdownFilter',(dropdownfilter, dorpdownoption) => {
+            cy.get(dropdownfilter).should('be.visible')
+            cy.get('select').first().select(dorpdownoption)
+          })
       
     
    
