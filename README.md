@@ -12,7 +12,7 @@ run npm run dev & npm run cypress:open this will have the web server running at 
 NOTE: Headless mode won't work because it won't have the Redux Dev Tools and the tests will fail
 
 # Approach
-I chose to use a Page Object Model kind of approach as we had discussed the benefits of it during the interview.
+I chose to use a Page Object Model kind of approach 
 
 The way I did this was to create a file per component in the pageobjects folder and imported them into support/index.js
 
