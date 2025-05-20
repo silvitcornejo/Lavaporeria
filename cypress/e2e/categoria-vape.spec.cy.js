@@ -1,7 +1,4 @@
-const productsList = '[class="products elementor-grid columns-4"] li'
-const productComponent = '[class="products elementor-grid columns-4"]'
-const productLinks = '[class="products elementor-grid columns-4"] a'
-
+import { categoriaVapeSelectors } from '../support/pageobject/categoria-vape'
 
 context('Lavaporeria Page Components Tests', () => {
     beforeEach(()=>{
@@ -11,14 +8,19 @@ context('Lavaporeria Page Components Tests', () => {
 
 describe('Product Cards',()=>{
   it('Check amount of cards at first instance',() => {
-   cy.vapeCards(productComponent,productsList,16)
-  cy.checkStructureOfLinks(productComponent,productLinks)
+   cy.vapeCards(categoriaVapeSelectors.productComponent,categoriaVapeSelectors.productsList,16)
+  cy.checkStructureOfLinks(categoriaVapeSelectors.productComponent,categoriaVapeSelectors.productLinks)
   })
 })  
 
 describe('Search Bar',() => {
+  //Extra note --> Error Handling:Add assertions to check for empty or error states, especially for search and pagination.//
 it('Search for a random product and check results',() => {
 cy.checkSearchBarFunctionality('Charlie',2)
+
+  it('Search for a non-existent product', () => {
+    cy.checkSearchBarFunctionality('zzzzzzzz', 0)
+})
 })
 })
 
@@ -28,9 +30,11 @@ it('Select a random option and check outcome',() =>{
   })
   })
 
-describe('Pagination',() => {
-    it('Check pagination component',() => {
+describe('Pagination', () => {
+  it('Check pagination component', () => {
     cy.paginationCategories(10)
+    // Assert that pagination exists
+    cy.get('.pagination').should('exist')
+    })
   })
-})
-})
+      })

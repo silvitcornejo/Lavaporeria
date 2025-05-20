@@ -1,7 +1,10 @@
-const selectors = {
+export const categoriaVapeSelectors = {
     searchBar: '[id="woocommerce-product-search-field-0"]',
     buscarButton : '[class="woocommerce-product-search"] button',
-    productsList : '[class="products elementor-grid columns-4"] li'
+    productsList : '[class="products elementor-grid columns-4"] li',
+    productsList : '[class="products elementor-grid columns-4"] li',
+    productComponent : '[class="products elementor-grid columns-4"]',
+    productLinks : '[class="products elementor-grid columns-4"] a',
 }
 
 
